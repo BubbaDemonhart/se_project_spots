@@ -1,7 +1,5 @@
 .profile {
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
   padding: 34px 0 20px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
@@ -39,7 +37,6 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
-  width: 97px;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -67,6 +64,8 @@
 }
 
 .profile__post-button {
+  margin-top: auto;
+  justify-content: center;
   margin-left: auto;
   display: flex;
   gap: 8px;
