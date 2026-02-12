@@ -45,7 +45,7 @@
   max-width: 420px;
 }
 
-.profile__edit-button {
+.profile__edit-btn {
   margin-top: auto;
   opacity: 0.7;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
@@ -59,11 +59,11 @@
   cursor: pointer;
 }
 
-.profile__edit-button:hover {
+.profile__edit-btn:hover {
   opacity: 1;
 }
 
-.profile__post-button {
+.profile__post-btn {
   margin-top: auto;
   justify-content: center;
   margin-left: auto;
@@ -79,11 +79,11 @@
   cursor: pointer;
 }
 
-.profile__post-button:hover {
+.profile__post-btn:hover {
   opacity: 0.8;
 }
 
-.post-button {
+.post-btn {
   width: 12px;
   height: 12px;
   border-radius: 2px;
@@ -115,7 +115,7 @@
     max-width: 288px;
   }
 
-  .profile__post-button {
+  .profile__post-btn {
     margin: 0;
     width: 100%;
   }
