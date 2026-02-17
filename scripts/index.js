@@ -16,7 +16,7 @@ const editProfileForm = editProfileModel.querySelector(".modal__form");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
-const newPostForm = newPostModel.querySelector(".model__form");
+const newPostForm = newPostModel.querySelector(".modal__form");
 const newPostImageLink = document.querySelector("#card-image-input");
 const newPostCaption = document.querySelector("#card-caption-input");
 
