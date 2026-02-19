@@ -21,11 +21,11 @@ const newPostImageLink = newPostForm.querySelector("#card-image-input");
 const newPostCaption = newPostForm.querySelector("#card-caption-input");
 
 function closeModal(modal) {
-  modal.classlist.remove("modal_is-opened");
+  modal.classList.remove("modal_is-opened");
 }
 
 function openModal(modal) {
-  modal.classlist.add("modal_is-opened");
+  modal.classList.add("modal_is-opened");
 }
 
 editProfileBtn.addEventListener("click", function () {
