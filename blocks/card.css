@@ -9,6 +9,11 @@
   display: block;
   border-radius: 8px;
   margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.card__image:hover {
+  outline: auto;
 }
 
 .card__content {
@@ -38,6 +43,7 @@
   background-color: transparent;
   opacity: 0.4;
   cursor: pointer;
+  background-repeat: no-repeat;
 }
 
 .card__like-btn:hover {
