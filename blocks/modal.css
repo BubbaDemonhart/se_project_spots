@@ -126,7 +126,7 @@
   opacity: 0.8;
 }
 
-.modal__image-contanier {
+.modal__image-container {
   position: relative;
 }
 
@@ -152,6 +152,7 @@
   border-radius: 8px;
   height: auto;
   position: absolute;
+  padding: 4px 8px;
 }
 
 @media screen and (max-width: 768px) {
