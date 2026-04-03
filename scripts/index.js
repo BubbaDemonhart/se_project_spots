@@ -86,6 +86,7 @@ const newPostImageLink = newPostForm.querySelector("#card-image-input");
 const newPostCaption = newPostForm.querySelector("#card-caption-input");
 
 const previewModal = document.querySelector("#preview-modal");
+const cardSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
@@ -98,9 +99,57 @@ function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
 
-editProfileBtn.addEventListener("click", function () {
+window.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closeModal(editProfileModal);
+  }
+});
+
+window.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closeModal(newPostModal);
+  }
+});
+
+window.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closeModal(previewModal);
+  }
+});
+
+window.addEventListener("click", (event) => {
+  const isOpen = editProfileModal.classList.contains("modal_is-opened");
+
+  if (isOpen && event.target === editProfileModal) {
+    closeModal(editProfileModal);
+  }
+});
+
+window.addEventListener("click", (event) => {
+  const isOpen = newPostModal.classList.contains("modal_is-opened");
+
+  if (isOpen && event.target === newPostModal) {
+    closeModal(newPostModal);
+  }
+});
+
+window.addEventListener("click", (event) => {
+  const isOpen = previewModal.classList.contains("modal_is-opened");
+
+  if (isOpen && event.target === previewModal) {
+    closeModal(previewModal);
+  }
+});
+
+editProfileBtn.addEventListener("click", function (evt) {
+  evt.stopPropagation();
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings,
+  );
   openModal(editProfileModal);
 });
 
@@ -140,8 +189,9 @@ function handleNewPostSubmit(evt) {
 
   cardList.prepend(cardElement);
 
-  closeModal(newPostModal);
   newPostForm.reset();
+  disableButton(cardSubmitBtn, settings);
+  closeModal(newPostModal);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);

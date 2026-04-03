@@ -19,4 +19,4 @@ Spots is an interactive website where people can upload photos, it has profile c
 
 - [link to the website](https://bubbademonhart.github.io/se_project_spots/)
 
-- [Project Pitch Video](https://drive.google.com/file/d/1ZQF47-BxoHox3ro48FJKgux3hjnvjQ4p/view?usp=sharing)
+- [Project Pitch Video](https://drive.google.com/file/d/1nEA5S6wbgyRVL2bSWy5rUnzAYVCojMsB/view?usp=drive_link)
