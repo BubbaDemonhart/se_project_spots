@@ -99,47 +99,40 @@ function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
 
-window.addEventListener("keydown", function (evt) {
+function handleEscape(evt) {
   if (evt.key === "Escape") {
-    closeModal(editProfileModal);
+    const openModal = document.querySelector(".modal_is-opened");
+    if (openModal) {
+      closeModal(openModal);
+    }
   }
-});
+}
 
-window.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closeModal(newPostModal);
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+  window.addEventListener("keydown", handleEscape);
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  window.removeEventListener("keydown", handleEscape);
+}
+
+function handleOVerlayClick(evt) {
+  if (evt.target.classList.contains("modal")) {
+    closeModal(evt.target);
   }
-});
+}
 
-window.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closeModal(previewModal);
-  }
-});
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+  window.addEventListener("click", handleOVerlayClick);
+}
 
-window.addEventListener("click", (event) => {
-  const isOpen = editProfileModal.classList.contains("modal_is-opened");
-
-  if (isOpen && event.target === editProfileModal) {
-    closeModal(editProfileModal);
-  }
-});
-
-window.addEventListener("click", (event) => {
-  const isOpen = newPostModal.classList.contains("modal_is-opened");
-
-  if (isOpen && event.target === newPostModal) {
-    closeModal(newPostModal);
-  }
-});
-
-window.addEventListener("click", (event) => {
-  const isOpen = previewModal.classList.contains("modal_is-opened");
-
-  if (isOpen && event.target === previewModal) {
-    closeModal(previewModal);
-  }
-});
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+  window.removeEventListener("click", handleOVerlayClick);
+}
 
 editProfileBtn.addEventListener("click", function (evt) {
   evt.stopPropagation();
