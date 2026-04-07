@@ -91,14 +91,6 @@ const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-}
-
-function openModal(modal) {
-  modal.classList.add("modal_is-opened");
-}
-
 function handleEscape(evt) {
   if (evt.key === "Escape") {
     const openModal = document.querySelector(".modal_is-opened");
@@ -108,17 +100,7 @@ function handleEscape(evt) {
   }
 }
 
-function openModal(modal) {
-  modal.classList.add("modal_is-opened");
-  window.addEventListener("keydown", handleEscape);
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_is-opened");
-  window.removeEventListener("keydown", handleEscape);
-}
-
-function handleOVerlayClick(evt) {
+function handleOverlayClick(evt) {
   if (evt.target.classList.contains("modal")) {
     closeModal(evt.target);
   }
@@ -126,16 +108,17 @@ function handleOVerlayClick(evt) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
-  window.addEventListener("click", handleOVerlayClick);
+  window.addEventListener("keydown", handleEscape);
+  window.addEventListener("click", handleOverlayClick);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  window.removeEventListener("click", handleOVerlayClick);
+  window.removeEventListener("keydown", handleEscape);
+  window.removeEventListener("click", handleOverlayClick);
 }
 
 editProfileBtn.addEventListener("click", function (evt) {
-  evt.stopPropagation();
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   resetValidation(
@@ -146,12 +129,11 @@ editProfileBtn.addEventListener("click", function (evt) {
   openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal);
-});
+const closeButtons = document.querySelectorAll(".modal__close-btn");
 
-previewModalCloseBtn.addEventListener("click", function () {
-  closeModal(previewModal);
+closeButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
 });
 
 newPostBtn.addEventListener("click", function () {
