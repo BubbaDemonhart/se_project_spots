@@ -11,12 +11,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
 
   createCard({ name, link }) {
@@ -45,12 +40,7 @@ class Api {
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
 
   editAvatarInfo(avatar) {
@@ -60,12 +50,7 @@ class Api {
       body: JSON.stringify({
         avatar,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((res) => this._checkResponse(res));
   }
 
   getUserInfo() {
@@ -74,11 +59,15 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  _handleResponse(res) {
+  _checkResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Error: ${res.status}`);
+  }
+
+  _handleResponse(res) {
+    return this._checkResponse(res);
   }
 
   changeLike(id, isLiked) {

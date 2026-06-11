@@ -95,16 +95,7 @@ function getCardElement(data) {
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
   const cardId = data._id || data.id;
-  const cardIsLiked = data.likes?.some((like) => {
-    if (typeof like === "string") {
-      return like === currentUserId;
-    }
-    return (
-      like._id === currentUserId ||
-      like.id === currentUserId ||
-      like === currentUserId
-    );
-  });
+  const cardIsLiked = data.isLiked;
   if (cardIsLiked) {
     cardLikeBtnEl.classList.add("card__like-btn_active");
   }
