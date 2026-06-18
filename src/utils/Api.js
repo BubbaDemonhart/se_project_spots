@@ -22,14 +22,14 @@ class Api {
         name,
         link,
       }),
-    }).then(this._handleResponse);
+    }).then((res) => this._checkResponse(res));
   }
 
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._handleResponse);
+    }).then((res) => this._checkResponse(res));
   }
 
   editUserInfo({ name, about }) {
@@ -56,7 +56,7 @@ class Api {
   getUserInfo() {
     return fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
       headers: this._headers,
-    }).then(this._handleResponse);
+    }).then((res) => this._checkResponse(res));
   }
 
   _checkResponse(res) {
@@ -66,15 +66,11 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  _handleResponse(res) {
-    return this._checkResponse(res);
-  }
-
   changeLike(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-    }).then(this._handleResponse);
+    }).then((res) => this._checkResponse(res));
   }
 }
 
