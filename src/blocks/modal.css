@@ -41,7 +41,7 @@
   right: 50px;
   width: 40px;
   height: 40px;
-  background-image: url(../images/Close\ Icon.svg);
+  background-image: url("../images/Close Icon.svg");
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -55,7 +55,7 @@
 .modal__close-btn_type_preview {
   top: 0;
   right: -40px;
-  background-image: url(../images/preview\ Close\ Icon.svg);
+  background-image: url("../images/preview Close Icon.svg");
   opacity: 1;
 }
 
@@ -146,6 +146,51 @@
 .modal__submit-btn_disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+
+#delete-modal .modal__form {
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+#delete-modal .modal__title {
+  max-width: 590px;
+  color: #212121;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#delete-modal .modal__submit-btn {
+  width: auto;
+  min-width: 156px;
+}
+
+#delete-modal .modal__submit-btn[type="submit"] {
+  background-color: #ff6565;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+}
+
+#delete-modal .modal__submit-btn[type="button"] {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #212121;
+  border-radius: 8px;
+}
+
+#delete-modal .modal__container {
+  width: auto;
+  max-width: 100%;
+  display: inline-block;
+  padding: 32px 40px;
+}
+
+#delete-modal .modal__close-btn {
+  top: 32px;
+  right: 40px;
 }
 
 .modal__image-container {
